@@ -1,5 +1,13 @@
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
+
+//xử lý lỗi uncaughtException
+process.on('uncaughtException',err=>{
+    console.log('UNCAUGHT. SHUTTING DOWN...');
+    console.log(err.name, err.message);
+    process.exit(1);
+})
+
 const app=require('./app');
 
 
@@ -17,8 +25,16 @@ mongoose.connect(DB,{ //mongoose.connect trả ra return
 })
 
 
-app.listen(port,()=>{
-    console.log(`App running on http://localhost:${port}/home`);
+const server = app.listen(port,()=>{
+    console.log(`App running on http://127.0.0.1:${port}`);
 });
 
 
+//Xử lý lỗi promise unhandle rejection (ví dụ như sai mật khẩu DB);
+process.on('unhandledRejection',err=>{
+    console.log('UNHANDLED REJECTION. SHUTTING DOWN...')
+    console.log(err.name, err.message);
+    server.close(()=>{  
+        process.exit(1);
+    })
+})

@@ -220,7 +220,7 @@ header .icons #menu-bars{
 }
 
 .dishes{
-    margin-top: 20px;
+    margin-top: 75px;
 }
 
 .dishes .box-container{
@@ -630,9 +630,10 @@ header .icons #menu-bars{
     width: 200px;
 }
 
+
 .log div span{
     border: 1px solid none;
-    padding:5px;
+    padding:6px;
     border-radius: 0.5rem;
 }
 
@@ -641,3 +642,6 @@ header .icons #menu-bars{
     color: white;
     background-color: #27ae60;
 }
+
+
+
