@@ -1,15 +1,24 @@
 const Menu = require("../models/menuModel");
+const Show = require("../models/showModel");
+const Order = require("../models/orderModel");
+const User = require("../models/userModel");
 
-exports.getOverview = (req,res)=>{
+exports.getOverview = async (req,res)=>{
+  const menus = await Menu.find();
+  const shows = await Show.find();
   const user = res.locals.user;
   if(user){
     res.status(200).render('./pages/overview',{
-      user:user
+      user:user,
+      menus:menus,
+      shows:shows
     })
   }
   else{
     res.status(200).render('./pages/overview',{
-      user:false
+      user:false,
+      menus:menus,
+      shows:shows
     })
   }
 };
@@ -27,28 +36,63 @@ exports.getSignupForm = (req,res)=>{
   })
 };
 
+exports.getListOrderUser = async (req,res)=>{
+  const user = res.locals.user;
+  const orderUser = await User.findById(user.id).populate('orders');
+  const arrayOrder = orderUser.orders
+  res.status(200).render('./pages/list-order-user',{
+    user:user,
+    arrayOrder:arrayOrder
+  });
+};
+
+
 
 //ADMIN
 exports.getCRUDMenuForm =async (req,res)=>{
     const menus = await Menu.find();
-    console.log(menus);
     res.status(200).render('./pages/crud-menu-form',{
-      menus
+      menus:menus
     });
 };
 
 exports.getCreateMenuForm =async (req,res)=>{
-  const menus = await Menu.find();
-  console.log(menus);
-  res.status(200).render('./pages/create-menu-form',{
-    menus
-  });
+  res.status(200).render('./pages/create-menu-form');
 };
 
 exports.getUpdateMenuForm =async (req,res)=>{
     const menu = await Menu.findById(req.params.id);
     res.status(200).render('./pages/update-menu-form',{
-      menu
+      menu:menu
     });
 };
 
+exports.getRUDOrderForm =async (req,res)=>{
+  const orders = await Order.find();
+  res.status(200).render('./pages/rud-user-order-form',{
+    orders:orders
+  });
+};
+
+exports.getCRUDShowForm =async (req,res)=>{
+  const shows = await Show.find();
+  res.status(200).render('./pages/crud-show-form',{
+    shows:shows
+  });
+};
+
+exports.getCreateShowForm =async (req,res)=>{
+  res.status(200).render('./pages/create-show-form');
+};
+
+exports.getUpdateShowForm =async (req,res)=>{
+  const show = await Show.findById(req.params.id);
+  const date = show.date.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'});
+  const arrayDate = date.split('/');
+  const dateTranfer = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`;
+  console.log(dateTranfer);
+  res.status(200).render('./pages/update-show-form',{
+    show:show,
+    dateTranfer:dateTranfer
+  });
+};

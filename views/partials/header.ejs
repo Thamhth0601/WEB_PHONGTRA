@@ -5,11 +5,14 @@
             <a href="#about">about</a>
             <a href="#menu">Show</a>
             <a href="#order">order</a>
+            <% if (user) {%>
+            <a href="/list-order-user">Lịch Sử Đặt Bàn</a>
+            <%};%>
         </nav>
 
     <div class="log">
         <% if (user) {%>
-            <div><a href="#" style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
+            <div><a style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
             <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;"><%= user.name.split(' ')[user.name.split(' ').length - 1] %></span></a></div>
         <%} else {%>
             <div><a href="login" style="color: black;"><span style="font-size:1.7rem;" class="log-in">Đăng Nhập</span></a></div>

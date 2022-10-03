@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="" />
     <meta name="author" content="" />
-
     <title>Admin</title>
+    <link rel="stylesheet" href="/css/alert.css">
+    <link rel="shortcut icon" href="#">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
 
     <!-- Custom styles for this template-->
@@ -25,47 +26,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/menu/menu.html"
-        >
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-glass-cheers"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">Không tên</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/menu/menu.html">
-            <i class="fas fa-fw fa-list"></i>
-
-            <span>Quản lý menu</span></a
-          >
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/order/order.html">
-            <i class="fas fa-fw fa-receipt"></i>
-            <span>Quản lý đơn đặt bàn</span></a
-          >
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/show-schedule/show-schedule.html">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Quản lý lịch diễn</span></a
-          >
-        </li>
-      </ul>
+      <%- include("../partials/side-bar-admin.ejs"); %>
       <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->

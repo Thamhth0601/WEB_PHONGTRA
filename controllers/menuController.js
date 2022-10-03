@@ -1,4 +1,5 @@
 const Menu=require('../models/menuModel'); // import model tour từ folder model
+const AppError=require('../utils/appError');
 const catchAsync=require('../utils/catchAsync');
 const multer =  require('multer'); // thư viện upload ảnh
 const sharp =  require('sharp'); // thư viện resize và lưu ảnh
@@ -11,7 +12,7 @@ const filterObj = (obj, ...allowedFields) => {
       if (allowedFields.includes(el)) newObj[el] = obj[el];
     });
     return newObj;
-  };
+};
 
 
 //BEGIN upload file img menu

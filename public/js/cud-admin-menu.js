@@ -55,7 +55,7 @@ export const deleteMenu = async (id) =>{
             showAlert('success', 'Delete menu successfully');
             window.setTimeout(()=>{
                 location.assign('/crud-menu-form')
-            })
+            },500)
         }
     }
     catch(err){

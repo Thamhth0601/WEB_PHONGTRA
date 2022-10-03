@@ -4,9 +4,9 @@ const showController=require('../controllers/showController'); //import file aut
 
 const router=express.Router();
 
-router.post('/',authController.protect,authController.restrictTo('admin'),showController.createShow);
-// router.patch('/:id',authController.protect,authController.restrictTo('admin'),menuController.uploadMenuImage,menuController.updateMenu);
-// router.delete('/:id',authController.protect,authController.restrictTo('admin'),menuController.deleteMenu) //authController.restrictTo('admin','lead-guide') // admin, lead-guide mới có quyền xóa tour
+router.post('/',authController.protect,authController.restrictTo('admin'),showController.uploadShowImage,showController.resizeShowImage,showController.createShow);
+router.patch('/:id',authController.protect,authController.restrictTo('admin'),showController.uploadShowImage,showController.resizeShowImage,showController.updateShow);
+router.delete('/:id',authController.protect,authController.restrictTo('admin'),showController.deleteShow) //authController.restrictTo('admin','lead-guide') // admin, lead-guide mới có quyền xóa tour
 
 
 

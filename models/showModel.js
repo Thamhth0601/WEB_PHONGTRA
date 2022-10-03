@@ -3,7 +3,7 @@ const mongoose=require('mongoose');
 const showSchema=new mongoose.Schema({
     day:{
         type:String,
-        required:[true,'Please enter dish name']
+        required:[true,'Please enter date show']
     },
     date:{
         type:Date,
@@ -16,6 +16,10 @@ const showSchema=new mongoose.Schema({
     singer:{
         type:String,
         required:[true,'Please enter the singer of the show']
+    },
+    imageShow:{
+        type:String,
+        required:[true,'Please choose a image of the show']
     },
     createAt:{
         type:Date,

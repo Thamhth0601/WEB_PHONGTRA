@@ -11,8 +11,10 @@
     <meta name="author" content="" />
 
     <title>Admin</title>
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="/css/menu-admin.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.css" integrity="sha512-gOfBez3ehpchNxj4TfBZfX1MDLKLRif67tFJNLQSpF13lXM1t9ffMNCbZfZNBfcN2/SaWvOf+7CvIHtQ0Nci2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css/alert.css">
     <!-- Custom styles for this template-->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,54 +24,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul
-        class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion"
-        id="accordionSidebar"
-      >
-        <!-- Sidebar - Brand -->
-        <a
-          class="sidebar-brand d-flex align-items-center justify-content-center"
-          href="/menu/menu.html"
-        >
-          <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-glass-cheers"></i>
-          </div>
-          <div class="sidebar-brand-text mx-3">Không tên</div>
-        </a>
-
-        <!-- Divider -->
-        <hr class="sidebar-divider my-0" />
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item active">
-          <a class="nav-link" href="/menu/menu.html">
-            <i class="fas fa-fw fa-list"></i>
-
-            <span>Quản lý menu</span></a
-          >
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/order/order.html">
-            <i class="fas fa-fw fa-receipt"></i>
-            <span>Quản lý đơn đặt bàn</span></a
-          >
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link" href="/index.html">
-            <i class="fas fa-fw fa-calendar-alt"></i>
-            <span>Quản lý lịch diễn</span></a
-          >
-        </li>
-
-        <li class="nav-item active">
-          <a class="nav-link log-out-admin" href="#">
-            <i class="fa-solid fa-right-from-bracket"></i>
-            <span>Đăng xuất</span></a
-          >
-        </li>
-      </ul>
+      <%- include("../partials/side-bar-admin.ejs"); %>
       <!-- End of Sidebar -->
 
       <!-- Content Wrapper -->

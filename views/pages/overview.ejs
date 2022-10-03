@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Responsive Food Website Design Tutorial</title>
+    <title>Phòng Trà Không Tên</title>
+    <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/css/overview.css">
+    <link rel="stylesheet" href="/css/alert.css">
 
 </head>
 <body>
@@ -20,51 +22,16 @@
         <div><h1 class="heading"> Menu </h1></div>
 
         <div class="box-container">
-            <div class="box">
-                <img src="/img/dish-1.png" alt="">
-                <h3>tasty food</h3>
-                <div class="describe">
-                    <p style="font-size: 14px;font-family: 'Nunito', sans-serif;">Nước cam hay nước cam ép, nước cam vắt là một loại thức uống phổ biến được làm từ cam bằng cách chiết xuất nước từ trái cam tươi</p>
+            <% menus.forEach(menu => { %>
+                <div class="box">
+                    <img src="/img/menus/<%=menu.imageDish %>" alt="">
+                    <h3><%= menu.name %></h3>
+                    <div class="describe">
+                        <p style="font-size: 14px;font-family: 'Nunito', sans-serif;"><%= menu.description%></p>
+                    </div>
+                    <span><%= new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(menu.price) %> </span>
                 </div>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-2.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-3.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-4.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-5.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-6.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
-            <div class="box">
-                <img src="/img/dish-3.png" alt="">
-                <h3>tasty food</h3>
-                <span>$15.99</span>
-            </div>
-
+            <% }); %>  
         </div>
 
     </section>
@@ -73,8 +40,7 @@
     <!-- about section starts  -->
     <section class="about" id="about">
 
-        <h3 class="sub-heading"> about us </h3>
-        <h1 class="heading"> why choose us? </h1>
+        <h1 class="heading"> About Us? </h1>
 
         <div class="row">
 
@@ -115,106 +81,20 @@
         <h3 class="heading"> Phòng Trà </h3>
 
         <div class="box-container">
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-1.jpg" alt="">
+            <% shows.forEach(show => { %>
+                <div class="box">
+                    <div class="image">
+                        <img src="/img/shows/<%=show.imageShow %>" alt="" height="283" width="220">
+                    </div>
+                    <div class="content">
+                        <h3 style="text-align: center;"><%=show.day %> - <%=show.date.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'})%></h3>
+                        <h3 style="text-align: center;">Đêm nhạc</h3>
+                        <h3 style="text-align: center;"><%=show.content %></h3>
+                        <h3 style="text-align: center;"><%=show.singer %></h3>
+                        <div style="text-align: center;"><a href="#order" class="btn">Đặt Bàn</a></div>
+                    </div>
                 </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <div style="text-align: center;"><a href="#order" class="btn">add to cart</a></div>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-2.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-3.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-4.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-5.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-6.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-7.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-8.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
-            <div class="box">
-                <div class="image">
-                    <img src="/img/menu-9.jpg" alt="">
-                </div>
-                <div class="content">
-                    <h3>delicious food</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi, accusantium.</p>
-                    <a href="#" class="btn">add to cart</a>
-                </div>
-            </div>
-
+            <% });%>
         </div>
 
     </section>
@@ -223,47 +103,46 @@
     <section class="order" id="order">
         <% if (user) { %>
             <h3 class="sub-heading"> order now </h3>
-            <h1 class="heading"> free and fast </h1>
-            <form action="">
+            <h1 class="heading"> Đặt Bàn Phòng Trà </h1>
+            <form class="form-user-order">
+                <input type="text" id="id_user" value="<%=user._id%>" hidden>
                 <div class="inputBox">
                     <div class="input">
-                        <span>your name</span>
-                        <input type="text" placeholder="enter your name">
+                        <span>Họ và tên</span>
+                        <input type="text" id="name" value="<%=user.name%>" required>
                     </div>
                     <div class="input">
-                        <span>your number</span>
-                        <input type="number" placeholder="enter your number">
+                        <span>Số Điện thoại</span>
+                        <input type="text" id="phone" placeholder="Vui lòng nhập SĐT" required maxlength="11" minlength="10">
                     </div>
                 </div>
                 <div class="inputBox">
                     <div class="input">
-                        <span>your order</span>
-                        <input type="text" placeholder="enter food name">
+                        <span>Số Lượng</span>
+                        <input type="number" id="amount" placeholder="Vui lòng nhập số lượng" min="0">
                     </div>
                     <div class="input">
-                        <span>additional food</span>
-                        <input type="test" placeholder="extra with food">
+                        <span>Ngày Đặt</span>
+                        <input type="date" id="dateOrder" placeholder="extra with food" required>
                     </div>
                 </div>
                 <div class="inputBox">
                     <div class="input">
-                        <span>how musch</span>
-                        <input type="number" placeholder="how many orders">
+                        <span>Show Diễn</span>
+                        <select id="show">
+                        <% shows.forEach(show => { %>
+                            <option value="<%=show._id %>"><%=show.content %></option>
+                        <% }); %>  
+                        </select>
                     </div>
                     <div class="input">
-                        <span>date and time</span>
-                        <input type="date">
+                        <span>Thời gian</span>
+                        <input id="timeOrder" type="time" required>
                     </div>
                 </div>
-                <div class="inputBox">
-                    <div class="input">
-                        <span>your address</span>
-                        <textarea name="" placeholder="enter your address" id="" cols="30" rows="10"></textarea>
-                    </div>
-                    <div class="input">
-                        <span>your message</span>
-                        <textarea name="" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
-                    </div>
+                <div>
+                    <span class="note">Ghi Chú</span>
+                    <textarea id="note" placeholder="Ghi Chú" id="" class="text-note" cols="30" rows="10"></textarea>
                 </div>
 
                 <input type="submit" value="order now" class="btn">

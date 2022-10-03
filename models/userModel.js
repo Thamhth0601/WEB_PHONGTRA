@@ -41,13 +41,29 @@ const userSchema=new mongoose.Schema({
         default:true,
         select:false // không hiển thị khi lấy,đọc dữ liệu từ database
     }
+},{ 
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 });
 
+userSchema.virtual('orders',{ //orders: tên field ảo được tạo 
+    ref:'Order', 
+    foreignField: 'user',
+    localField:'_id' 
+});
+
+//muốn dùng field ảo ở trên phải có populate vào field ảo 
+// userSchema.pre(/^find/, function(next){
+//     this.populate('orders'); // orders là tên field ảo được tạo ra ở trên
+//     next();
+// })
 
 userSchema.pre('save',async function(next){// pre: chạy trước các sự kiện(hooks), sẽ lọt vào function middleware trước khi dữ liệu được lưu, next trong trường hợp gọi thêm 1 middleware nữa    
     this.passwordConfirm=undefined;  // khi mã hóa xong thì không cần passwordConfirm nữa, chỉ cần lúc tạo mới, xóa trường passwordConfirm khi lưu dữ liệu  
     next();
-})
+});
+
+
 
 
 

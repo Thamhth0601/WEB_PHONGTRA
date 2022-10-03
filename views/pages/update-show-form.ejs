@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <meta name="description" content="" />
     <meta name="author" content="" />
-
     <title>Admin</title>
     <link rel="stylesheet" href="/css/alert.css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
     <link rel="shortcut icon" href="#">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.css" integrity="sha512-gOfBez3ehpchNxj4TfBZfX1MDLKLRif67tFJNLQSpF13lXM1t9ffMNCbZfZNBfcN2/SaWvOf+7CvIHtQ0Nci2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <style>
-        #displayImg img{
+        #displayImgShow img{
             width:50%;
             height:50%;
         }
@@ -40,68 +40,85 @@
             <h5 class="text-center font-weight-bold text-success">Quản lý menu</h5>
           </nav>
           <!-- End of Topbar -->
-          <h2 style="margin-left:310px">Sửa món</h2>
+          <h2 style="margin-left:310px">Sửa lịch diễn</h2>
           <!-- Begin Page Content -->
           <div class="container-fluid px-5">
             <div class="row">
               <div class="col-7">
                 <div class="form-group">
-                  <label for="name">Tên món <span class="text-danger">*</spanc></label>
+                  <label for="date">Ngày diễn 1<span class="text-danger">*</spanc></label>
                   <input
-                    type="name"
+                    type="date"
                     class="form-control"
-                    id="name"
-                    placeholder="Nhập tên món"
+                    id="date"
+                    placeholder="Ngày diễn"
                     required
-                    value="<%= menu.name%>"
+                    value="<%= dateTranfer%>"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="price">Giá <span class="text-danger">*</spanc></label>
+                  <label for="day">Ngày<span class="text-danger">*</spanc></label>
                   <input
-                    type="number"
+                    type="text"
                     class="form-control"
-                    id="price"
-                    placeholder="Nhập giá"
+                    id="day"
+                    placeholder="Ngày"
                     required
-                    value="<%= menu.price%>"
+                    value="<%= show.day%>"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="description">Mô tả</label>
-                  <textarea
+                  <label for="content-show">Chủ đề âm nhạc<span class="text-danger">*</spanc></label>
+                  <input
+                    type="text"
                     class="form-control"
-                    id="description"
-                    rows="5"
-                  ><%= menu.description%></textarea>
+                    id="content-show"
+                    placeholder="Chủ đề âm nhạc"
+                    required
+                    value="<%= show.content%>"
+                  />
                 </div>
-                <input id="id" type="text" value="<%= menu._id%>" hidden>
+                <div class="form-group">
+                  <label for="singer">Ca sĩ <span class="text-danger">*</spanc></label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="singer"
+                    placeholder="Ca sĩ"
+                    required
+                    value="<%= show.singer%>"
+                  />
+                </div>
               </div>
               <div class="col-5">
                 <div class="form-group">
-                  <label for="image">Chọn hình ảnh <span class="text-danger">*</spanc></label>
+                  <label for="imageShow">Chọn hình ảnh <span class="text-danger">*</spanc></label>
                   <input
                     type="file"
                     class="form-control-file"
-                    id="imageDish"
+                    id="imageShow"
                     required
                   />
-                  <div style="margin-top: 10px;" id="displayImg"><img src="/img/menus/<%= menu.imageDish%>" alt=""></div>
+                  <div style="margin-top: 10px;" id="displayImgShow"><img src="/img/shows/<%= show.imageShow%>" alt=""></div>
                 </div>
               </div>
             </div>
+
+            <!-- id -->
+            <input id="id" type="text" value="<%= show._id%>" hidden>
+            <!-- id -->
             <div class="d-flex justify-content-center mt-3">
               <button class="btn btn-secondary btn-icon-split mr-3">
                 <span class="icon text-white-50">
                   <i class="fas fa-xmark"></i>
                 </span>
-                <a href="/crud-menu-form" style="color:inherit;"><span class="text">Hủy</span></a>
+                <a href="/crud-show-form" style="color:inherit;"><span class="text">Hủy</span></a>
               </button>
               <button type="submit" class="btn btn-success btn-icon-split">
                 <span class="icon text-white-50">
                   <i class="fas fa-save"></i>
                 </span>
-                <span class="text btn-save-menu">Lưu</span>
+                <span class="text btn-save-show">Lưu</span>
               </button>
             </div>
           </div>

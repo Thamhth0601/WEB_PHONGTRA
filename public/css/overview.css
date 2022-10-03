@@ -123,7 +123,7 @@ header .icons #menu-bars{
     display: none;
 }
 
-#search-form{
+/* #search-form{
     position: fixed;
     top:-110%; left:0; 
     height:100%; width:100%;
@@ -173,10 +173,10 @@ header .icons #menu-bars{
     cursor: pointer;
     top: 2rem; right:3rem;
     font-size: 5rem;
-}
+} */
 
 
-.home .home-slider .slide{
+/* .home .home-slider .slide{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -211,7 +211,7 @@ header .icons #menu-bars{
     font-size: 2.2rem;
     padding:.5rem 0;
     line-height: 1.5;
-}
+} */
 
 
 
@@ -243,6 +243,7 @@ header .icons #menu-bars{
 .dishes .box-container .box img{
     height:17rem;
     margin:1rem 0;
+    border-radius: 5px;
 }
 
 .dishes .box-container .box h3{
@@ -353,7 +354,7 @@ header .icons #menu-bars{
     height: 100%;
     width: 100%;
     border-radius: .5rem;
-    object-fit: cover;
+    object-fit: scale-down;
 }
 
 
@@ -373,7 +374,7 @@ header .icons #menu-bars{
 
 .menu .box-container .box .content h3{
     color:var(--black);
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .menu .box-container .box .content p{
@@ -389,7 +390,7 @@ header .icons #menu-bars{
     font-size: 2.5rem;
 }
 
-.review .slide{
+/* .review .slide{
     padding:2rem;
     box-shadow:var(--box-shadow);
     border:.1rem solid rgba(0,0,0,.2);
@@ -433,7 +434,7 @@ header .icons #menu-bars{
     font-size: 1.5rem;
     line-height: 1.8;
     color:var(--light-color);
-}
+} */
 
 .order form{
     max-width:90rem;
@@ -512,7 +513,7 @@ header .icons #menu-bars{
     text-decoration: underline;
 }
 
-.footer .credit{
+/* .footer .credit{
     text-align: center;
     border-top: .1rem solid rgba(0,0,0,.1);
     font-size: 2rem;
@@ -524,7 +525,7 @@ header .icons #menu-bars{
 
 .footer .credit span{
     color:var(--green);
-}
+} */
 
 .loader-container{
     position: fixed;
@@ -622,6 +623,10 @@ header .icons #menu-bars{
         width:100%;
     }
 
+    .text-note{
+        width:100%;
+    }
+
 }
 
 .log{
@@ -645,3 +650,33 @@ header .icons #menu-bars{
 
 
 
+select{
+    background:#eee;
+    border-radius: .5rem;
+    padding:1rem;
+    font-size: 1.6rem;
+    color:var(--black);
+    text-transform: none;
+    margin-bottom: 1rem;
+    width:100%;
+}
+
+.note{
+    display:block;
+    padding:.5rem 0;
+    font-size: 1.5rem;
+    color:var(--light-color);
+}
+
+.text-note{
+    background:#eee;
+    border-radius: .5rem;
+    padding:1rem;
+    font-size: 1.6rem;
+    color:var(--black);
+    text-transform: none;
+    margin-bottom: 1rem;
+    width:100%;
+    height: 120px;
+    resize: none;
+}
