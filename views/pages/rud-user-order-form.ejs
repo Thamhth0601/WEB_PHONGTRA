@@ -44,25 +44,26 @@
         <div class="container-fluid px-5">
           <!-- filter -->
           <div class="filter mb-4">
-            <form action="" method="GET" class="row justify-content-between align-items-end ">
+            <form action="/rud-user-order-form" method="GET" class="row justify-content-between align-items-end ">
               <div class="col">
                 <label for="no">Khách Hàng</label>
-                <input type="text" class="form-control" id="no" />
+                <input type="text" name="name" class="form-control" id="no" />
               </div>
               <div class="col">
                 <label for="phone">Số điện thoại</label>
-                <input type="text" class="form-control" id="phone" />
+                <input type="text" name="phone" class="form-control" id="phone" />
               </div>
               <div class="col">
                 <label for="date">Ngày</label>
-                <input type="date" class="form-control" id="date" />
+                <input type="date" name="dateOrder" class="form-control" id="date" />
               </div>
               <div class="col">
-                <label for="no">Trạng thái</label>
-                <select class="form-control">
-                  <option selected>Chọn</option>
-                  <option value="confirmed">Đã xác nhận</option>
-                  <option value="cancelled">Đã hủy</option>
+                <label for="no" name="status">Trạng thái</label>
+                <select class="form-control" name="status">
+                  <option selected value="">Chọn</option>
+                  <option value="Chờ xác nhận">Chờ xác nhận</option>
+                  <option value="Đã xác nhận">Đã xác nhận</option>
+                  <option value="Đã hủy">Đã hủy</option>
                 </select>
               </div>
               <div class="col">

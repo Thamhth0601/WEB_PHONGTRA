@@ -68,7 +68,20 @@ exports.getUpdateMenuForm =async (req,res)=>{
 };
 
 exports.getRUDOrderForm =async (req,res)=>{
-  const orders = await Order.find();
+  //filter req query
+  let obj = req.query;
+  for (const key in obj) {
+    if(obj[key]===''){
+        delete obj[key]
+    }
+  }
+  if(obj.dateOrder){
+    const dateTranfder = obj.dateOrder;
+    console.log(dateTranfder)
+    obj.dateOrder = new Date(dateTranfder)
+  };
+
+  const orders = await Order.find(obj);
   res.status(200).render('./pages/rud-user-order-form',{
     orders:orders
   });

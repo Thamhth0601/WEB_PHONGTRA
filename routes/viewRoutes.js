@@ -17,7 +17,7 @@ router.get('/crud-menu-form',authController.protect,authController.restrictTo('a
 router.get('/create-menu-form',authController.protect,authController.restrictTo('admin'),viewsController.getCreateMenuForm);
 router.get('/update-menu-form/:id',authController.protect,authController.restrictTo('admin'),viewsController.getUpdateMenuForm);
 
-router.get('/rud-order-form',authController.protect,authController.restrictTo('admin'),viewsController.getRUDOrderForm);
+router.get('/rud-user-order-form',authController.protect,authController.restrictTo('admin'),viewsController.getRUDOrderForm);
 
 router.get('/crud-show-form',authController.protect,authController.restrictTo('admin'),viewsController.getCRUDShowForm);
 router.get('/create-show-form',authController.protect,authController.restrictTo('admin'),viewsController.getCreateShowForm);
