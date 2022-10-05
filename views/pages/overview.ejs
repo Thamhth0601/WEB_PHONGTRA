@@ -113,7 +113,7 @@
                     </div>
                     <div class="input">
                         <span>Số Điện thoại</span>
-                        <input type="text" id="phone" placeholder="Vui lòng nhập SĐT" required maxlength="11" minlength="10">
+                        <input type="text" id="phone" placeholder="Vui lòng nhập SĐT" required pattern="[0-9]{10,11}" oninvalid="setCustomValidity('Vui lòng nhập số điện thoại hợp lệ')" onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
                 <div class="inputBox">

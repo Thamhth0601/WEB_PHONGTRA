@@ -112,7 +112,7 @@ exports.protect=catchAsync(async(req,res,next)=>{
     //3 Check if user still exist // kiểm tra xem user có tồn tại trong database nữa không
     const currentUser=await User.findById(decoded.id);  // tìm user trong database theo id (id của user đăng nhập nằm trong decoded)
     
-    console.log(currentUser);
+    // console.log(currentUser);
     
     if(!currentUser){// khi không tìm thấy user thì tạo lỗi theo cú pháp của AppError , truyền qua tham số err của errorController
         return next(new AppError('The user belonging to this token does no longer exist.',401));
@@ -126,8 +126,6 @@ exports.protect=catchAsync(async(req,res,next)=>{
     req.user=currentUser; // thêm thông tin của người request hiện tại vào obj req (được dùng cho restrictTo), giải thích thêm trong object req có key:user , value:currentUser  là 1 object chứa thông tin của người dùng
     res.locals.user = currentUser; 
     
-    console.log('Đã lọt vào protect')
-
     next();
 });
 
