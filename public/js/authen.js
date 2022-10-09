@@ -6,7 +6,7 @@ export const signup = async (data) =>{
     try{
         const res = await axios({
             method:'POST', 
-            url:'http://127.0.0.1:8080/api/v1/users/signup',
+            url:'/api/v1/users/signup',
             data: data // data send with request(gửi lên url)
         });
         if(res.data.status === 'success'){
@@ -17,8 +17,12 @@ export const signup = async (data) =>{
         }
     }
     catch(err){
-        // showAlert('error',err.response.data.message);
-        showAlert('error','Tài Khoản Đã Tồn Tại');
+        if(err.response.data.message.includes('Password are not the same')){
+            showAlert('error','Xác nhận mật khẩu không giống với mật khẩu');
+        }
+        else if(err.response.data.message.includes('email_1 dup key')){
+            showAlert('error','Tài Khoản Đã Tồn Tại');
+        }
     }; 
 }
 
@@ -26,7 +30,7 @@ export const login = async (data) =>{
     try{
         const res = await axios({
             method:'POST', 
-            url:'http://127.0.0.1:8080/api/v1/users/login',
+            url:'/api/v1/users/login',
             data:data
         });
 
@@ -37,7 +41,7 @@ export const login = async (data) =>{
             },1500)
         }
         else if(res.data.status === 'success' && res.data.data.user.role === 'admin'){
-            showAlert('success', 'Admin Đăng nhập thành công!')
+            showAlert('success', 'Admin đăng nhập thành công!')
             window.setTimeout(()=>{
                 location.assign('/crud-menu-form')
             },1500)
@@ -53,7 +57,7 @@ export const logout = async (email,password) =>{
     try{
         const res = await axios({
             method:'GET',
-            url:'http://127.0.0.1:8080/api/v1/users/logout',
+            url:'/api/v1/users/logout',
         });
         if(res.data.status === 'success'){
             //location.reload(true);

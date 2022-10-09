@@ -59,6 +59,7 @@
                   <label for="price">Giá <span class="text-danger">*</spanc></label>
                   <input
                     type="number"
+                    min="0"
                     class="form-control"
                     id="price"
                     placeholder="Nhập giá"
@@ -76,12 +77,12 @@
               </div>
               <div class="col-5">
                 <div class="form-group">
-                  <label for="image">Chọn hình ảnh <span class="text-danger">*</spanc></label>
+                  <label for="image">Chọn hình ảnh (yêu cầu ảnh phải có kích thước 270x170) <span class="text-danger">*</spanc></label>
                   <input
                     type="file"
                     class="form-control-file"
                     id="imageDish"
-                    required
+                    required 
                   />
                   <div style="margin-top: 10px;" id="displayImg"></div>
                 </div>
@@ -90,15 +91,15 @@
             <div class="d-flex justify-content-center mt-3">
               <button class="btn btn-secondary btn-icon-split mr-3">
                 <span class="icon text-white-50">
-                  <i class="fas fa-xmark"></i>
+                  <a href="/crud-menu-form" style="color:inherit;"><i class="fas fa-xmark"></i></a>
                 </span>
                 <a href="/crud-menu-form" style="color:inherit;"><span class="text">Hủy</span></a>
               </button>
-              <button type="submit" class="btn btn-success btn-icon-split">
+              <button type="submit" class="btn btn-success btn-icon-split btn-create-menu">
                 <span class="icon text-white-50">
                   <i class="fas fa-save"></i>
                 </span>
-                <span class="text btn-create-menu">Lưu</span>
+                <span class="text">Lưu</span>
               </button>
             </div>
           </div>

@@ -11,7 +11,7 @@ const showSchema=new mongoose.Schema({
     },
     content:{
         type:String,
-        required:[true,'Please enter the content of the show']
+        required:[true,'Please enter the content of the show'],
     },
     singer:{
         type:String,
@@ -27,6 +27,7 @@ const showSchema=new mongoose.Schema({
     }
 })
 
+showSchema.index({date:1,content:1},{unique:true})
 
 
 

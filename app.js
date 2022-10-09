@@ -3,6 +3,7 @@ const morgan=require('morgan');// morgan là một middleware
 const path = require('path') // path là thư viện có sẵn của nodejs
 const dotenv=require('dotenv');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError=require('./utils/appError');
 const globalErrorHandle=require('./controllers/errorController'); // //Global Error Handling Middleware
@@ -20,6 +21,9 @@ app.set('views',path.join(__dirname,'views')); // khai báo template nằm ở t
 
 //MORGAN
 app.use(morgan('dev'));
+
+//COMPRESSION
+app.use(compression());
 
 //SET HEADER
 app.use((req,res,next)=>{

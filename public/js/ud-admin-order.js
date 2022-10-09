@@ -6,7 +6,7 @@ export const agreeOrder = async (idOrder) =>{
     try {
         const res = await axios({
             method:'POST',
-            url: `http://127.0.0.1:8080/api/v1/orders/confirm-order/${idOrder}`
+            url: `/api/v1/orders/confirm-order/${idOrder}`
         });
         console.log(res)
         if(res.status == '204'){
@@ -26,7 +26,7 @@ export const denyOrder = async (idOrder) =>{
     try {
         const res = await axios({
             method:'POST',
-            url: `http://127.0.0.1:8080/api/v1/orders/deny-order/${idOrder}`
+            url: `/api/v1/orders/deny-order/${idOrder}`
         });
         console.log(res)
         if(res.status == '204'){
@@ -45,7 +45,7 @@ export const deleteOrder = async (idOrder) =>{
     try {
         const res = await axios({
             method:'DELETE',
-            url: `http://127.0.0.1:8080/api/v1/orders/${idOrder}`
+            url: `/api/v1/orders/${idOrder}`
         });
         console.log(res)
         if(res.status == '204'){

@@ -1,11 +1,12 @@
 import axios from 'axios'
+import fs from 'fs'
 import {showAlert} from './alert'
 
 export const createNewShow = async (data) =>{
     try {
         const res = await axios({
             method:'POST',
-            url: 'http://127.0.0.1:8080/api/v1/shows',
+            url: '/api/v1/shows',
             data: data
         });
         if(res.data.status === 'success'){
@@ -16,7 +17,12 @@ export const createNewShow = async (data) =>{
         }
     }
     catch(err){
-        showAlert('error',err.response.data.message)
+        if(err.response.data.message.includes('date_1_content_1 dup key')){
+            showAlert('error','Ngày diễn và chủ đề âm nhạc đã tồn tại!');
+        }
+        else {
+            showAlert('error',err.response.data.message);
+        }
     }
 }
 
@@ -24,7 +30,7 @@ export const updateShow = async (data,id) =>{
     try {
         const res = await axios({
             method:'PATCH',
-            url: `http://127.0.0.1:8080/api/v1/shows/${id}`,
+            url: `/api/v1/shows/${id}`,
             data: data//data send with request(gửi lên url)
         });
         if(res.data.status === 'success'){
@@ -36,7 +42,12 @@ export const updateShow = async (data,id) =>{
         }
     }
     catch(err){
-        showAlert('error',err.response.data.message)
+        if(err.response.data.message.includes('date_1_content_1 dup key')){
+            showAlert('error','Ngày diễn và chủ đề âm nhạc đã tồn tại!');
+        }
+        else {
+            showAlert('error',err.response.data.message);
+        }
     }
 }
 

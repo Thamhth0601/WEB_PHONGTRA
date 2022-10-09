@@ -5,7 +5,7 @@ export const createNewMenu = async (data) =>{
     try {
         const res = await axios({
             method:'POST',
-            url: 'http://127.0.0.1:8080/api/v1/menus',
+            url: '/api/v1/menus',
             data: data//data send with request(gửi lên url)
         });
         if(res.data.status === 'success'){
@@ -26,7 +26,7 @@ export const updateMenu = async (data,id) =>{
     try {
         const res = await axios({
             method:'PATCH',
-            url: `http://127.0.0.1:8080/api/v1/menus/${id}`,
+            url: `/api/v1/menus/${id}`,
             data: data//data send with request(gửi lên url)
         });
         if(res.data.status === 'success'){
@@ -48,7 +48,7 @@ export const deleteMenu = async (id) =>{
     try {
         const res = await axios({
             method:'DELETE',
-            url: `http://127.0.0.1:8080/api/v1/menus/${id}`
+            url: `/api/v1/menus/${id}`
         });
 
         if(res.status == '204'){

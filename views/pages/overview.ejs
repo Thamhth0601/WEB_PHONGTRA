@@ -7,8 +7,7 @@
     <title>Phòng Trà Không Tên</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="/css/overview.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <link rel="stylesheet" href="/css/overview.css">
     <link rel="stylesheet" href="/css/alert.css">
 
 </head>
@@ -40,33 +39,32 @@
     <!-- about section starts  -->
     <section class="about" id="about">
 
-        <h1 class="heading"> About Us? </h1>
+        <h1 class="heading"> Tổng Quan </h1>
 
         <div class="row">
 
             <div class="image">
-                <img src="/img/about-img.png" alt="">
+                <img src="/img/301475271_1402834600207557_6933951900741632919_n.jpg" style="border-radius: 25px;" alt="">
             </div>
 
             <div class="content">
-                <h3>best food in the country</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, sequi corrupti corporis quaerat voluptatem ipsam neque labore modi autem, saepe numquam quod reprehenderit rem? Tempora aut soluta odio corporis nihil!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, nemo. Sit porro illo eos cumque deleniti iste alias, eum natus.</p>
+                <h3 style="text-align: center;">Phòng Trà Không Tên</h3>
+                <p>Phòng Trà Không Tên đi vào hoạt động từ tháng 4-2006, đây không chỉ là nơi thư giãn, giao lưu thuần túy giữa khán giả- ca sĩ mà còn là cõi riêng của rất nhiều văn nghệ sĩ hải ngoại về biểu diễn tại quê nhà như: Elvis Phương, Duy Quang, Thái Châu, Tommy Ngô,...</p>
+                <p>Gần 12 năm hoạt động, Không Tên không những trụ được mà ngày càng có nhiều khán giả trong nước và Việt kiều tìm đến, nhất là sau khi khán phòng nâng cấp nội thất với trên 400 chỗ ngồi và một lầu”. Sự ấm cúng, phục vụ chu đáo và nhiều chương trình hay đã nhanh chóng giúp Không Tên trở thành “cõi vô thường” của những người Việt xa quê hương, đến đây sẽ có cảm giác như đang ở chính “ngôi nhà âm nhạc” của mình.</p>
                 <div class="icons-container">
                     <div class="icons">
-                        <i class="fas fa-shipping-fast"></i>
-                        <span>free delivery</span>
+                        <i class="fa-solid fa-music"></i>
+                        <span>music</span>
                     </div>
                     <div class="icons">
-                        <i class="fas fa-dollar-sign"></i>
-                        <span>easy payments</span>
+                        <i class="fa-solid fa-martini-glass"></i>
+                        <span>drinks</span>
                     </div>
                     <div class="icons">
                         <i class="fas fa-headset"></i>
                         <span>24/7 service</span>
                     </div>
                 </div>
-                <a href="#" class="btn">learn more</a>
             </div>
 
         </div>
@@ -109,7 +107,7 @@
                 <div class="inputBox">
                     <div class="input">
                         <span>Họ và tên</span>
-                        <input type="text" id="name" value="<%=user.name%>" required>
+                        <input type="text" id="name" value="<%=user.name%>" required disabled>
                     </div>
                     <div class="input">
                         <span>Số Điện thoại</span>
@@ -123,21 +121,22 @@
                     </div>
                     <div class="input">
                         <span>Ngày Đặt</span>
-                        <input type="date" id="dateOrder" placeholder="extra with food" required>
+                        <input type="date" id="dateOrder" placeholder="extra with food" required disabled>
                     </div>
                 </div>
                 <div class="inputBox">
                     <div class="input">
                         <span>Show Diễn</span>
-                        <select id="show">
+                        <select id="show" required>
+                            <option selected value="" >*Chọn Show Diễn</option>
                         <% shows.forEach(show => { %>
-                            <option value="<%=show._id %>"><%=show.content %></option>
+                            <option value="<%=show._id %>" data-date="<%=show.date.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'}) %>"><%=show.content %></option>
                         <% }); %>  
                         </select>
                     </div>
                     <div class="input">
                         <span>Thời gian</span>
-                        <input id="timeOrder" type="time" required>
+                        <input id="timeOrder" type="time" min="09:00" max="22:00" required oninvalid="setCustomValidity('Khung giờ phòng trà là từ 9:00 -- 22:00')" onchange="try{setCustomValidity('')}catch(e){}">
                     </div>
                 </div>
                 <div>

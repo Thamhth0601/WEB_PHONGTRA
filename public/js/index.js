@@ -3,6 +3,8 @@ import {createNewMenu,updateMenu, deleteMenu} from './cud-admin-menu'
 import {createNewShow,updateShow,deleteShow} from './cud-admin-show'
 import {createNewOrder} from './user-create-order'
 import {agreeOrder,denyOrder,deleteOrder} from './ud-admin-order'
+import {showAlert} from './alert'
+
 
 
 const signupForm = document.querySelector('.form-sign-up');
@@ -34,6 +36,12 @@ const btnCreateShow = document.querySelector('.btn-create-show');
 const btnSaveShow = document.querySelector('.btn-save-show');
 const btnDeleteShows = document.querySelectorAll('.btn-delete-show');
 const btnDeleteShowConfirm = document.querySelector('.btn-confirm-delete-show');
+
+const btnSelect = document.getElementById('show');
+// const btnSelectOptions = document.querySelectorAll('.show');
+
+const dateShow = document.getElementById('date');
+
 
 
 
@@ -129,6 +137,24 @@ if(btnCreateMenu){
         form.append('description',document.getElementById('description').value);
         form.append('imageDish',document.getElementById('imageDish').files[0]);
 
+        // Check data
+        if(form.get('name') ===''){
+            showAlert('error','Vui lòng nhập tên món ăn');
+            return
+        }
+        else if(form.get('price') ==='') {
+            showAlert('error','Vui lòng nhập giá');
+            return  
+        }
+        else if(Number(form.get('price')) < 0) {
+            showAlert('error','Giá món ăn phải lớn hoặc bằng hơn 0');
+            return
+        }
+        else if(form.get('imageDish') == 'undefined'){
+            showAlert('error','Vui lòng chọn hình ảnh');
+            return
+        }
+
         createNewMenu(form);
     });
 }
@@ -144,6 +170,25 @@ if(btnSaveMenu){
         form.append('description',document.getElementById('description').value);
         form.append('imageDish',document.getElementById('imageDish').files[0]);
         const id = document.getElementById('id').value;
+
+        // Check data
+        if(form.get('name') ===''){
+            showAlert('error','Vui lòng nhập tên món ăn');
+            return
+        }
+        else if(form.get('price') ==='') {
+            showAlert('error','Vui lòng nhập giá');
+            return  
+        }
+        else if(Number(form.get('price')) < 0) {
+            showAlert('error','Giá món ăn phải lớn hoặc bằng hơn 0');
+            return
+        }
+        else if(form.get('imageDish') === 'undefined'){
+            showAlert('error','Vui lòng chọn hình ảnh');
+            return
+        }
+
         updateMenu(form, id);
     });
 }
@@ -241,6 +286,36 @@ if(btnCreateShow){
         formShow.append('singer',document.getElementById('singer').value);
         formShow.append('imageShow',document.getElementById('imageShow').files[0]);
 
+        for(var p of formShow){
+            if(p[0]!='imageShow'){
+                if(p[1].includes('\t')){
+                    formShow.set(p[0],p[1].split('\t')[0])
+                }
+            }
+        }
+
+        // Check data
+        if(formShow.get('date') ===''){
+            showAlert('error','Vui lòng nhập ngày diễn');
+            return
+        }
+        else if(formShow.get('day') ==='') {
+            showAlert('error','Vui lòng nhập ngày');
+            return  
+        }
+        else if(formShow.get('content') ==='') {
+            showAlert('error','Vui lòng chủ đề âm nhạc');
+            return  
+        }
+        else if(formShow.get('singer') ==='') {
+            showAlert('error','Vui lòng nhập tên ca sĩ');
+            return  
+        }
+        else if(formShow.get('imageShow') == 'undefined'){
+            showAlert('error','Vui lòng chọn hình ảnh');
+            return
+        }
+
         createNewShow(formShow);
     })
 }
@@ -276,4 +351,56 @@ if((btnDeleteShows)){
             deleteShow(id_del_show);
         })
     }
+}
+
+
+//Chọn Show trong overview thì hiển thị ngày biểu diễn của show đó  - Chỉ thực hiện chức năng hiển thị dữ liệu, không be
+if(btnSelect){
+    btnSelect.addEventListener('change',(e)=>{
+        var date = btnSelect.options[btnSelect.selectedIndex].dataset.date;
+        if(!date){
+            document.getElementById('dateOrder').value = '';
+            return
+        }
+            
+        const arrayDate = date.split('/');
+        if(arrayDate[0] < 10) {arrayDate[0] = `0${arrayDate[0]}`}
+        const dateTranfer = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`;
+        document.getElementById('dateOrder').value = dateTranfer;
+    })
+}
+
+
+//thay đổi ngày diễn -> thay đổi thứ trong thêm lịch diễn
+if(dateShow){
+    dateShow.addEventListener('change',()=>{
+        var day_name = '';
+        const dateShowChosen = new Date(dateShow.value);
+        var current_day = dateShowChosen.getDay();
+        switch (current_day) {
+            case 0:
+                day_name = "Chủ Nhật";
+                break;
+            case 1:
+                day_name = "Thứ Hai";
+                break;
+            case 2:
+                day_name = "Thứ Ba";
+                break;
+            case 3:
+                day_name = "Thứ Tư";
+                break;
+            case 4:
+                day_name = "Thứ Năm";
+                break;
+            case 5:
+                day_name = "Thứ Sáu";
+                break;
+            case 6:
+                day_name = "Thứ Bảy";
+            };
+
+        document.getElementById('day').value = day_name;
+
+    })
 }
