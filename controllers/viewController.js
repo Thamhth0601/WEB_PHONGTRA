@@ -100,7 +100,7 @@ exports.getRUDOrderForm =async (req,res)=>{
 };
 
 exports.getCRUDShowForm =async (req,res)=>{
-  const shows = await Show.find().sort({date:-1});
+  const shows = await Show.find().sort({date:1});
   res.status(200).render('./pages/crud-show-form',{
     shows:shows
   });
