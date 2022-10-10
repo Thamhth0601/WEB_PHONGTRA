@@ -23,13 +23,19 @@ module.exports=(err,req,res,next)=>{ // định nghĩa 4 tham số err,req,res,n
     err.statusCode=err.statusCode || 500;
     err.status=err.status || 'error';
 
-    // console.log(err.message);
-    // console.log(req.body);
+    console.log(err.message);
 
-    if(err.message.includes('date_1_content_1 dup key')){
+    if(err.message.includes('tea-room-app.shows index: date_1_content_1 dup key')){
         if(req.body.imageShow != 'undefined'){
-            const fileDelete = req.body.imageShow
-            fs.unlinkSync(`${__dirname}/../public/img/shows/${fileDelete}`); // xóa file ảnh
+            const fileImgShowDel = req.body.imageShow
+            fs.unlinkSync(`${__dirname}/../public/img/shows/${fileImgShowDel}`); // xóa file ảnh
+        }
+    }
+
+    if(err.message.includes('tea-room-app.menus index: name_1 dup key')){
+        if(req.body.imageDish != 'undefined'){
+            const fileImgMenuDel = req.body.imageDish
+            fs.unlinkSync(`${__dirname}/../public/img/menus/${fileImgMenuDel}`); // xóa file ảnh
         }
     }
 

@@ -37,7 +37,7 @@ exports.resizeShowImage = catchAsync(async (req,res,next) =>{
     // Nếu không có file ảnh thì đi đến middleware tiếp theo
     if(!req.file) return next()
 
-    req.file.filename = `show-${req.user.id}-admin-${Date.now()}.jpeg`
+    req.file.filename = `show-${req.user.id}-admin-${Date.now()}.jpeg` // đặt lại tên cho ảnh
 
     await sharp(req.file.buffer).resize(220,280).toFormat('jpeg').jpeg({quanlity:90}).toFile(`public/img/shows/${req.file.filename}`); 
     //sharp(req.file.buffer).resize(500,500)... return ra promise
@@ -85,6 +85,9 @@ exports.deleteShow=catchAsync(async (req,res,next)=>{ //hàm async return promis
     if(!show){ // nếu không tồn tại ID hợp lệ trong database thì sẽ tạo ra lỗi
         return next(new AppError('No show found with that ID',404)); // return để thoát ra
     }
+
+    const fileImgShowDel = show.imageShow
+    fs.unlinkSync(`${__dirname}/../public/img/shows/${fileImgShowDel}`); // xóa file ảnh
 
     res.status(204).json({
         status:'success',

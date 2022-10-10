@@ -3,6 +3,8 @@ const AppError=require('../utils/appError');
 const catchAsync=require('../utils/catchAsync');
 const multer =  require('multer'); // thư viện upload ảnh
 const sharp =  require('sharp'); // thư viện resize và lưu ảnh
+const fs= require('fs');
+const { isBuffer } = require('util');
 
 
 //filter body
@@ -49,7 +51,7 @@ exports.resizeMenuPhoto = catchAsync(async (req,res,next) =>{
 
 //create menu
 exports.createMenu=catchAsync(async(req,res,next)=>{ // hàm catchAsync return ra hàm vô danh sau đó gán vào createTour, khi tạo mới tour thì hàm vô danh đó sẽ được gọi, cần tham số next để gọi đến global error handling middleware
-    //tự làm create menu có upload ảnh
+    //create menu có upload ảnh
     req.body.imageDish = req.file.filename; // thêm ảnh vào req.body
     const menu=await Menu.create(req.body);
 
@@ -66,12 +68,10 @@ exports.createMenu=catchAsync(async(req,res,next)=>{ // hàm catchAsync return r
 //update menu
 exports.updateMenu=catchAsync(async (req,res,next)=>{ //hàm async return promise
     const filterBody = filterObj(req.body, 'name','price','description'); //filterBody = { name: 'Sophie Louise Hart 1' }
-    console.log(filterBody)
     if(req.file){
-        filterBody.imageDish = req.file.filename //filterBody.photo vì upload.single('photo')
+        filterBody.imageDish = req.file.filename //nếu có file ảnh thì thêm imageDish vào object filterBody
     };
 
-    console.log(filterBody);
 
     const menu=await Menu.findByIdAndUpdate(req.params.id,filterBody,{new:true,runValidators:true});
     if(!menu){ // nếu không tồn tại ID hợp lệ trong database thì sẽ tạo ra lỗi
@@ -93,6 +93,10 @@ exports.deleteMenu=catchAsync(async (req,res,next)=>{ //hàm async return promis
     if(!menu){ // nếu không tồn tại ID hợp lệ trong database thì sẽ tạo ra lỗi
         return next(new AppError('No menu found with that ID',404)); // return để thoát ra
     }
+
+    //Xóa ảnh Menu
+    const fileImgMenuDel = menu.imageDish
+    fs.unlinkSync(`${__dirname}/../public/img/menus/${fileImgMenuDel}`); // xóa file ảnh
 
     res.status(204).json({
         status:'success',

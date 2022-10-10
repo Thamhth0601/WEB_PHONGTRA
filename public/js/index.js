@@ -184,10 +184,6 @@ if(btnSaveMenu){
             showAlert('error','Giá món ăn phải lớn hoặc bằng hơn 0');
             return
         }
-        else if(form.get('imageDish') === 'undefined'){
-            showAlert('error','Vui lòng chọn hình ảnh');
-            return
-        }
 
         updateMenu(form, id);
     });
@@ -358,10 +354,6 @@ if(btnSaveShow){
         else if(formShow.get('singer') ==='') {
             showAlert('error','Vui lòng nhập tên ca sĩ');
             return  
-        }
-
-        for(var p of formShow){
-            console.log(p)
         }
 
         updateShow(formShow, id);

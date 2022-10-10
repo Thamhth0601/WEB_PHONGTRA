@@ -17,7 +17,7 @@ export const createNewShow = async (data) =>{
         }
     }
     catch(err){
-        if(err.response.data.message.includes('date_1_content_1 dup key')){
+        if(err.response.data.message.includes('tea-room-app.shows index: date_1_content_1 dup key')){
             showAlert('error','Ngày diễn và chủ đề âm nhạc đã tồn tại!');
         }
         else {
@@ -43,7 +43,7 @@ export const updateShow = async (data,id) =>{
     }
     catch(err){
         console.log(err);
-        if(err.response.data.message.includes('date_1_content_1 dup key')){
+        if(err.response.data.message.includes('tea-room-app.shows index: date_1_content_1 dup key')){
             showAlert('error','Ngày diễn và chủ đề âm nhạc đã tồn tại!');
         }
         else {

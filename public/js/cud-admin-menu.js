@@ -16,7 +16,12 @@ export const createNewMenu = async (data) =>{
         }
     }
     catch(err){
-        showAlert('error',err.response.data.message)
+        if(err.response.data.message.includes('tea-room-app.menus index: name_1 dup key')){
+            showAlert('error','Đã tồn tại đồ uống!');
+        }
+        else {
+            showAlert('error',err.response.data.message);
+        }
     }
 }
 
@@ -38,7 +43,12 @@ export const updateMenu = async (data,id) =>{
         }
     }
     catch(err){
-        showAlert('error',err.response.data.message)
+        if(err.response.data.message.includes('tea-room-app.menus index: name_1 dup key')){
+            showAlert('error','Đã tồn tại đồ uống!');
+        }
+        else {
+            showAlert('error',err.response.data.message);
+        }
     }
 }
 

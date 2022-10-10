@@ -4804,7 +4804,12 @@ var createNewMenu = /*#__PURE__*/function () {
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            (0, _alert.showAlert)('error', _context.t0.response.data.message);
+
+            if (_context.t0.response.data.message.includes('tea-room-app.menus index: name_1 dup key')) {
+              (0, _alert.showAlert)('error', 'Đã tồn tại đồ uống!');
+            } else {
+              (0, _alert.showAlert)('error', _context.t0.response.data.message);
+            }
 
           case 10:
           case "end":
@@ -4853,7 +4858,12 @@ var updateMenu = /*#__PURE__*/function () {
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
-            (0, _alert.showAlert)('error', _context2.t0.response.data.message);
+
+            if (_context2.t0.response.data.message.includes('tea-room-app.menus index: name_1 dup key')) {
+              (0, _alert.showAlert)('error', 'Đã tồn tại đồ uống!');
+            } else {
+              (0, _alert.showAlert)('error', _context2.t0.response.data.message);
+            }
 
           case 10:
           case "end":
@@ -4975,7 +4985,7 @@ var createNewShow = /*#__PURE__*/function () {
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
 
-            if (_context.t0.response.data.message.includes('date_1_content_1 dup key')) {
+            if (_context.t0.response.data.message.includes('tea-room-app.shows index: date_1_content_1 dup key')) {
               (0, _alert.showAlert)('error', 'Ngày diễn và chủ đề âm nhạc đã tồn tại!');
             } else {
               (0, _alert.showAlert)('error', _context.t0.response.data.message);
@@ -5030,7 +5040,7 @@ var updateShow = /*#__PURE__*/function () {
             _context2.t0 = _context2["catch"](0);
             console.log(_context2.t0);
 
-            if (_context2.t0.response.data.message.includes('date_1_content_1 dup key')) {
+            if (_context2.t0.response.data.message.includes('tea-room-app.shows index: date_1_content_1 dup key')) {
               (0, _alert.showAlert)('error', 'Ngày diễn và chủ đề âm nhạc đã tồn tại!');
             } else {
               (0, _alert.showAlert)('error', _context2.t0.response.data.message);
@@ -5567,9 +5577,6 @@ if (btnSaveMenu) {
     } else if (Number(form.get('price')) < 0) {
       (0, _alert.showAlert)('error', 'Giá món ăn phải lớn hoặc bằng hơn 0');
       return;
-    } else if (form.get('imageDish') === 'undefined') {
-      (0, _alert.showAlert)('error', 'Vui lòng chọn hình ảnh');
-      return;
     }
 
     (0, _cudAdminMenu.updateMenu)(form, id);
@@ -5765,20 +5772,6 @@ if (btnSaveShow) {
       return;
     }
 
-    var _iterator3 = _createForOfIteratorHelper(formShow),
-        _step3;
-
-    try {
-      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-        var p = _step3.value;
-        console.log(p);
-      }
-    } catch (err) {
-      _iterator3.e(err);
-    } finally {
-      _iterator3.f();
-    }
-
     (0, _cudAdminShow.updateShow)(formShow, id);
   });
 } //Admin delete show 
@@ -5888,7 +5881,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57114" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61470" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
