@@ -1,5 +1,5 @@
+const fs = require('fs');
 import axios from 'axios'
-import fs from 'fs'
 import {showAlert} from './alert'
 
 export const createNewShow = async (data) =>{
@@ -42,6 +42,7 @@ export const updateShow = async (data,id) =>{
         }
     }
     catch(err){
+        console.log(err);
         if(err.response.data.message.includes('date_1_content_1 dup key')){
             showAlert('error','Ngày diễn và chủ đề âm nhạc đã tồn tại!');
         }

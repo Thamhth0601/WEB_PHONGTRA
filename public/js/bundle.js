@@ -4929,8 +4929,6 @@ exports.updateShow = exports.deleteShow = exports.createNewShow = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _fs = _interopRequireDefault(require("fs"));
-
 var _alert = require("./alert");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -4942,6 +4940,8 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var fs = require('fs');
 
 var createNewShow = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
@@ -5022,12 +5022,13 @@ var updateShow = /*#__PURE__*/function () {
               }, 1000);
             }
 
-            _context2.next = 10;
+            _context2.next = 11;
             break;
 
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0);
 
             if (_context2.t0.response.data.message.includes('date_1_content_1 dup key')) {
               (0, _alert.showAlert)('error', 'Ngày diễn và chủ đề âm nhạc đã tồn tại!');
@@ -5035,7 +5036,7 @@ var updateShow = /*#__PURE__*/function () {
               (0, _alert.showAlert)('error', _context2.t0.response.data.message);
             }
 
-          case 10:
+          case 11:
           case "end":
             return _context2.stop();
         }
@@ -5096,7 +5097,7 @@ var deleteShow = /*#__PURE__*/function () {
 }();
 
 exports.deleteShow = deleteShow;
-},{"axios":"../../node_modules/axios/index.js","fs":"../../node_modules/parcel-bundler/src/builtins/_empty.js","./alert":"alert.js"}],"user-create-order.js":[function(require,module,exports) {
+},{"fs":"../../node_modules/parcel-bundler/src/builtins/_empty.js","axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"user-create-order.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5703,7 +5704,7 @@ if (btnCreateShow) {
       (0, _alert.showAlert)('error', 'Vui lòng nhập ngày');
       return;
     } else if (formShow.get('content') === '') {
-      (0, _alert.showAlert)('error', 'Vui lòng chủ đề âm nhạc');
+      (0, _alert.showAlert)('error', 'Vui lòng nhập chủ đề âm nhạc');
       return;
     } else if (formShow.get('singer') === '') {
       (0, _alert.showAlert)('error', 'Vui lòng nhập tên ca sĩ');
@@ -5715,7 +5716,7 @@ if (btnCreateShow) {
 
     (0, _cudAdminShow.createNewShow)(formShow);
   });
-} //Update menu
+} //Update show
 
 
 if (btnSaveShow) {
@@ -5729,6 +5730,55 @@ if (btnSaveShow) {
     formShow.append('singer', document.getElementById('singer').value);
     formShow.append('imageShow', document.getElementById('imageShow').files[0]);
     var id = document.getElementById('id').value;
+
+    var _iterator2 = _createForOfIteratorHelper(formShow),
+        _step2;
+
+    try {
+      for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+        var p = _step2.value;
+
+        if (p[0] != 'imageShow') {
+          if (p[1].includes('\t')) {
+            formShow.set(p[0], p[1].split('\t')[0]);
+          }
+        }
+      } // Check data
+
+    } catch (err) {
+      _iterator2.e(err);
+    } finally {
+      _iterator2.f();
+    }
+
+    if (formShow.get('date') === '') {
+      (0, _alert.showAlert)('error', 'Vui lòng nhập ngày diễn');
+      return;
+    } else if (formShow.get('day') === '') {
+      (0, _alert.showAlert)('error', 'Vui lòng nhập ngày');
+      return;
+    } else if (formShow.get('content') === '') {
+      (0, _alert.showAlert)('error', 'Vui lòng nhập chủ đề âm nhạc');
+      return;
+    } else if (formShow.get('singer') === '') {
+      (0, _alert.showAlert)('error', 'Vui lòng nhập tên ca sĩ');
+      return;
+    }
+
+    var _iterator3 = _createForOfIteratorHelper(formShow),
+        _step3;
+
+    try {
+      for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+        var p = _step3.value;
+        console.log(p);
+      }
+    } catch (err) {
+      _iterator3.e(err);
+    } finally {
+      _iterator3.f();
+    }
+
     (0, _cudAdminShow.updateShow)(formShow, id);
   });
 } //Admin delete show 
@@ -5838,7 +5888,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57114" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

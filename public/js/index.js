@@ -304,7 +304,7 @@ if(btnCreateShow){
             return  
         }
         else if(formShow.get('content') ==='') {
-            showAlert('error','Vui lòng chủ đề âm nhạc');
+            showAlert('error','Vui lòng nhập chủ đề âm nhạc');
             return  
         }
         else if(formShow.get('singer') ==='') {
@@ -320,7 +320,7 @@ if(btnCreateShow){
     })
 }
 
-//Update menu
+//Update show
 if(btnSaveShow){
     btnSaveShow.addEventListener('click',(e)=>{ // nút btn mới có submit
         e.preventDefault();
@@ -333,6 +333,36 @@ if(btnSaveShow){
         formShow.append('imageShow',document.getElementById('imageShow').files[0]);
 
         const id = document.getElementById('id').value;
+
+        for(var p of formShow){
+            if(p[0]!='imageShow'){
+                if(p[1].includes('\t')){
+                    formShow.set(p[0],p[1].split('\t')[0])
+                }
+            }
+        }
+
+        // Check data
+        if(formShow.get('date') ===''){
+            showAlert('error','Vui lòng nhập ngày diễn');
+            return
+        }
+        else if(formShow.get('day') ==='') {
+            showAlert('error','Vui lòng nhập ngày');
+            return  
+        }
+        else if(formShow.get('content') ==='') {
+            showAlert('error','Vui lòng nhập chủ đề âm nhạc');
+            return  
+        }
+        else if(formShow.get('singer') ==='') {
+            showAlert('error','Vui lòng nhập tên ca sĩ');
+            return  
+        }
+
+        for(var p of formShow){
+            console.log(p)
+        }
 
         updateShow(formShow, id);
     });
@@ -401,6 +431,5 @@ if(dateShow){
             };
 
         document.getElementById('day').value = day_name;
-
     })
 }
