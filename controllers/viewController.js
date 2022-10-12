@@ -52,18 +52,30 @@ exports.getListOrderUser = async (req,res)=>{
 exports.getCRUDMenuForm =async (req,res)=>{
     const menus = await Menu.find();
     res.status(200).render('./pages/crud-menu-form',{
-      menus:menus
+      menus:menus,
+      //set color side bar admin
+      isMenu:true,
+      isOrder:false,
+      isShow:false
     });
 };
 
 exports.getCreateMenuForm =async (req,res)=>{
-  res.status(200).render('./pages/create-menu-form');
+  res.status(200).render('./pages/create-menu-form',{
+      isMenu:true,
+      isOrder:false,
+      isShow:false
+  });
 };
 
 exports.getUpdateMenuForm =async (req,res)=>{
     const menu = await Menu.findById(req.params.id);
     res.status(200).render('./pages/update-menu-form',{
-      menu:menu
+      menu:menu,
+      //set color side bar admin
+      isMenu:true,
+      isOrder:false,
+      isShow:false
     });
 };
 
@@ -95,19 +107,32 @@ exports.getRUDOrderForm =async (req,res)=>{
 
   const orders = await Order.find(obj).sort({dateOrder:1});
   res.status(200).render('./pages/rud-user-order-form',{
-    orders:orders
+    orders:orders,
+    //set color side bar admin
+    isMenu:false,
+    isOrder:true,
+    isShow:false
   });
 };
 
 exports.getCRUDShowForm =async (req,res)=>{
   const shows = await Show.find().sort({date:1});
   res.status(200).render('./pages/crud-show-form',{
-    shows:shows
+    shows:shows,
+    //set color side bar admin
+    isMenu:false,
+    isOrder:false,
+    isShow:true
   });
 };
 
 exports.getCreateShowForm =async (req,res)=>{
-  res.status(200).render('./pages/create-show-form');
+  res.status(200).render('./pages/create-show-form',{
+    //set color side bar admin
+    isMenu:false,
+    isOrder:false,
+    isShow:true
+  });
 };
 
 exports.getUpdateShowForm =async (req,res)=>{
@@ -118,6 +143,10 @@ exports.getUpdateShowForm =async (req,res)=>{
   const dateTranfer = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`;
   res.status(200).render('./pages/update-show-form',{
     show:show,
-    dateTranfer:dateTranfer
+    dateTranfer:dateTranfer,
+    //set color side bar admin
+    isMenu:false,
+    isOrder:false,
+    isShow:true
   });
 };
