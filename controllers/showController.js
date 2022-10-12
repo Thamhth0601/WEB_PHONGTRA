@@ -3,6 +3,8 @@ const AppError=require('../utils/appError');
 const catchAsync=require('../utils/catchAsync');
 const multer =  require('multer'); // thư viện upload ảnh
 const sharp =  require('sharp'); // thư viện resize và lưu ảnh
+const fs= require('fs');
+
 
 
 //filter body

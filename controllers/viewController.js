@@ -93,7 +93,7 @@ exports.getRUDOrderForm =async (req,res)=>{
     }
   }
 
-  const orders = await Order.find(obj);
+  const orders = await Order.find(obj).sort({dateOrder:1});
   res.status(200).render('./pages/rud-user-order-form',{
     orders:orders
   });
