@@ -3,13 +3,19 @@ const Show = require("../models/showModel");
 const Order = require("../models/orderModel");
 const User = require("../models/userModel");
 
+//USER
 exports.getOverview = async (req,res)=>{
   const menus = await Menu.find();
   const shows = await Show.find();
   const user = res.locals.user;
   if(user){
+    let lastName = user.name.split(' ')[user.name.split(' ').length - 1]
+    if(lastName.length > 7){
+      lastName = lastName.slice(0,7) +'...'
+    }
     res.status(200).render('./pages/overview',{
       user:user,
+      lastName:lastName,
       menus:menus,
       shows:shows
     })
