@@ -219,7 +219,36 @@ if(formUserOrder){
         const timeOrder = document.getElementById('timeOrder').value;
         const note = document.getElementById('note').value;
 
-        createNewOrder({name,phone,amount,dateOrder,show,timeOrder,note},id_user);
+        //lấy ngày hiện tại
+        let getDate = new Date();
+
+        let yearCurrent = getDate.getFullYear();
+        let monthCurrent = getDate.getMonth() + 1;
+        let dayCurrent = getDate.getDate();
+        // T4 ngày 22/12/2021
+
+        const arrayDateInput  = dateOrder.split('-');
+        
+        if(Number(arrayDateInput[0]) >= Number(yearCurrent)){ 
+            if(Number(arrayDateInput[1]) >= Number(monthCurrent)){
+                if(Number(arrayDateInput[2]) >= Number(dayCurrent)){
+                    createNewOrder({name,phone,amount,dateOrder,show,timeOrder,note},id_user);
+                }
+                else{
+                    showAlert('error','Show diễn không tồn tại');
+                    return
+                }
+            }
+            else{
+                showAlert('error','Show diễn không tồn tại');
+                return
+            }
+        }
+        else if(Number(arrayDateInput[0]) < Number(yearCurrent)){
+            showAlert('error','Show diễn không tồn tại');
+            return
+        }
+
     })
 }
 
@@ -387,6 +416,7 @@ if(btnSelect){
             
         const arrayDate = date.split('/');
         if(arrayDate[0] < 10) {arrayDate[0] = `0${arrayDate[0]}`}
+        if(arrayDate[1] < 10) {arrayDate[1] = `0${arrayDate[1]}`}
         const dateTranfer = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`;
         document.getElementById('dateOrder').value = dateTranfer;
     })

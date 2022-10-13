@@ -140,7 +140,9 @@ exports.getUpdateShowForm =async (req,res)=>{
   const date = show.date.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'});
   const arrayDate = date.split('/');
   if(arrayDate[0] < 10) {arrayDate[0] = `0${arrayDate[0]}`}
+  if(arrayDate[1] < 10) {arrayDate[1] = `0${arrayDate[1]}`}
   const dateTranfer = `${arrayDate[2]}-${arrayDate[1]}-${arrayDate[0]}`;
+  console.log(dateTranfer);
   res.status(200).render('./pages/update-show-form',{
     show:show,
     dateTranfer:dateTranfer,

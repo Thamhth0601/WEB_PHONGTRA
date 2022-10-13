@@ -5610,16 +5610,39 @@ if (formUserOrder) {
     var dateOrder = document.getElementById('dateOrder').value;
     var show = document.getElementById('show').value;
     var timeOrder = document.getElementById('timeOrder').value;
-    var note = document.getElementById('note').value;
-    (0, _userCreateOrder.createNewOrder)({
-      name: name,
-      phone: phone,
-      amount: amount,
-      dateOrder: dateOrder,
-      show: show,
-      timeOrder: timeOrder,
-      note: note
-    }, id_user);
+    var note = document.getElementById('note').value; //lấy ngày hiện tại
+
+    var getDate = new Date();
+    var yearCurrent = getDate.getFullYear();
+    var monthCurrent = getDate.getMonth() + 1;
+    var dayCurrent = getDate.getDate(); // T4 ngày 22/12/2021
+
+    var arrayDateInput = dateOrder.split('-');
+
+    if (Number(arrayDateInput[0]) >= Number(yearCurrent)) {
+      if (Number(arrayDateInput[1]) >= Number(monthCurrent)) {
+        if (Number(arrayDateInput[2]) >= Number(dayCurrent)) {
+          (0, _userCreateOrder.createNewOrder)({
+            name: name,
+            phone: phone,
+            amount: amount,
+            dateOrder: dateOrder,
+            show: show,
+            timeOrder: timeOrder,
+            note: note
+          }, id_user);
+        } else {
+          (0, _alert.showAlert)('error', 'Show diễn không tồn tại');
+          return;
+        }
+      } else {
+        (0, _alert.showAlert)('error', 'Show diễn không tồn tại');
+        return;
+      }
+    } else if (Number(arrayDateInput[0]) < Number(yearCurrent)) {
+      (0, _alert.showAlert)('error', 'Show diễn không tồn tại');
+      return;
+    }
   });
 } //Admin confirm user order
 
@@ -5808,6 +5831,10 @@ if (btnSelect) {
       arrayDate[0] = "0".concat(arrayDate[0]);
     }
 
+    if (arrayDate[1] < 10) {
+      arrayDate[1] = "0".concat(arrayDate[1]);
+    }
+
     var dateTranfer = "".concat(arrayDate[2], "-").concat(arrayDate[1], "-").concat(arrayDate[0]);
     document.getElementById('dateOrder').value = dateTranfer;
   });
@@ -5881,7 +5908,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56880" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59213" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
