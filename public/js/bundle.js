@@ -5603,6 +5603,7 @@ if (btnDeleteMenus) {
 if (formUserOrder) {
   formUserOrder.addEventListener('submit', function (e) {
     e.preventDefault();
+    var inputTime = document.getElementById('timeOrder');
     var id_user = document.getElementById('id_user').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('phone').value;
@@ -5610,7 +5611,9 @@ if (formUserOrder) {
     var dateOrder = document.getElementById('dateOrder').value;
     var show = document.getElementById('show').value;
     var timeOrder = document.getElementById('timeOrder').value;
-    var note = document.getElementById('note').value; //lấy ngày hiện tại
+    var note = document.getElementById('note').value;
+    console.log(timeOrder);
+    return; //lấy ngày hiện tại
 
     var getDate = new Date();
     var yearCurrent = getDate.getFullYear();
@@ -5619,8 +5622,28 @@ if (formUserOrder) {
 
     var arrayDateInput = dateOrder.split('-');
 
-    if (Number(arrayDateInput[0]) >= Number(yearCurrent)) {
-      if (Number(arrayDateInput[1]) >= Number(monthCurrent)) {
+    if (Number(arrayDateInput[0]) > Number(yearCurrent)) {
+      (0, _userCreateOrder.createNewOrder)({
+        name: name,
+        phone: phone,
+        amount: amount,
+        dateOrder: dateOrder,
+        show: show,
+        timeOrder: timeOrder,
+        note: note
+      }, id_user);
+    } else if (Number(arrayDateInput[0]) == Number(yearCurrent)) {
+      if (Number(arrayDateInput[1]) > Number(monthCurrent)) {
+        (0, _userCreateOrder.createNewOrder)({
+          name: name,
+          phone: phone,
+          amount: amount,
+          dateOrder: dateOrder,
+          show: show,
+          timeOrder: timeOrder,
+          note: note
+        }, id_user);
+      } else if (Number(arrayDateInput[1]) == Number(monthCurrent)) {
         if (Number(arrayDateInput[2]) >= Number(dayCurrent)) {
           (0, _userCreateOrder.createNewOrder)({
             name: name,
@@ -5908,7 +5931,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54232" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50962" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

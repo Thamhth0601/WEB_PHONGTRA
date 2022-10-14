@@ -209,6 +209,7 @@ if(formUserOrder){
     formUserOrder.addEventListener('submit',(e)=>{
         e.preventDefault();
 
+        const inputTime = document.getElementById('timeOrder');
         const id_user = document.getElementById('id_user').value;
 
         const name = document.getElementById('name').value;
@@ -219,6 +220,10 @@ if(formUserOrder){
         const timeOrder = document.getElementById('timeOrder').value;
         const note = document.getElementById('note').value;
 
+        console.log(timeOrder);
+
+        return
+
         //lấy ngày hiện tại
         let getDate = new Date();
 
@@ -228,9 +233,15 @@ if(formUserOrder){
         // T4 ngày 22/12/2021
 
         const arrayDateInput  = dateOrder.split('-');
-        
-        if(Number(arrayDateInput[0]) >= Number(yearCurrent)){ 
-            if(Number(arrayDateInput[1]) >= Number(monthCurrent)){
+
+        if(Number(arrayDateInput[0]) > Number(yearCurrent)){
+            createNewOrder({name,phone,amount,dateOrder,show,timeOrder,note},id_user);
+        }
+        else if(Number(arrayDateInput[0]) == Number(yearCurrent)){
+            if(Number(arrayDateInput[1]) > Number(monthCurrent)){
+                createNewOrder({name,phone,amount,dateOrder,show,timeOrder,note},id_user);
+            }
+            else if(Number(arrayDateInput[1]) == Number(monthCurrent)){
                 if(Number(arrayDateInput[2]) >= Number(dayCurrent)){
                     createNewOrder({name,phone,amount,dateOrder,show,timeOrder,note},id_user);
                 }
@@ -248,7 +259,6 @@ if(formUserOrder){
             showAlert('error','Show diễn không tồn tại');
             return
         }
-
     })
 }
 
