@@ -10,7 +10,7 @@ exports.getOverview = async (req,res)=>{
   const user = res.locals.user;
   if(user){
     let lastName = user.name.split(' ')[user.name.split(' ').length - 1]
-    if(lastName.length > 7){
+    if(lastName.length > 10){
       lastName = lastName.slice(0,7) +'...'
     }
     res.status(200).render('./pages/overview',{
