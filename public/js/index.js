@@ -220,10 +220,6 @@ if(formUserOrder){
         const timeOrder = document.getElementById('timeOrder').value;
         const note = document.getElementById('note').value;
 
-        console.log(timeOrder);
-
-        return
-
         //lấy ngày hiện tại
         let getDate = new Date();
 
