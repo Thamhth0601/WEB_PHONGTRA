@@ -29,7 +29,7 @@
           padding-top: 12px;
           padding-bottom: 12px;
           text-align: left;
-          background-color: #04AA6D;
+          background-color: #27ae60;
           color: white;
         }
     </style>
@@ -37,20 +37,20 @@
 <body>
     <!-- header section starts      -->
     <header>
-        <a href="#dishes" class="logo">Phòng Trà Không Tên</a>
+    <a href="#dishes" class="logo">Phòng Trà Không Tên</a>
         <nav class="navbar">
-            <a href="/#dishes">Menu</a>
-            <a href="/#about">about</a>
-            <a href="/#menu">Show</a>
-            <a href="/#order">order</a>
+            <a href="/#dishes">Đồ Uống</a>
+            <a href="/#about">Giới Thiệu</a>
+            <a href="/#menu">Lịch Diễn</a>
+            <a href="/#order">Đặt Bàn</a>
             <a class="active" href="/list-order-user">Lịch Sử Đặt Bàn</a>
         </nav>
-    <div class="log">
-        <div><a style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
-        <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;"><%= user.name.split(' ')[user.name.split(' ').length - 1] %></span></a></div>
-    </div>
+        <div class="log">
+            <div><a style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
+            <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;text-transform: none;"><%= lastName %></span></a></div>
+        </div>
 
-</header>
+    </header>
     <!-- header section ends-->
 
     <h1 style="margin:100px 0 20px 0; text-align: center; font-size: 25px;">Lịch Sử Đặt Bàn</h1>

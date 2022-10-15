@@ -17,10 +17,10 @@
         <% if (user) {%>
             <% if (lastName) {%>
                 <div><a style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
-                <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;" title="<%= user.name.split(' ')[user.name.split(' ').length - 1] %>"><%= lastName %></span></a></div>
+                <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;text-transform: none;" title="<%= user.name.split(' ')[user.name.split(' ').length - 1] %>"><%= lastName %></span></a></div>
             <%} else {%>
                 <div><a style="color: black;"><span style="font-size:1.7rem ;" class="log-out" >Đăng Xuất</span></a></div>
-                <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60;"><%= user.name.split(' ')[user.name.split(' ').length - 1] %></span></a></div>
+                <div style="text-align: center;"><a id="active" href="#" style="color: white;text-align: center;"><span class="name" style="font-size:1.7rem ;background-color:#27ae60; text-transform: none;"><%= user.name.split(' ')[user.name.split(' ').length - 1] %></span></a></div>
             <%} %>   
         <%} else {%>
             <div><a href="login" style="color: black;"><span style="font-size:1.7rem;" class="log-in">Đăng Nhập</span></a></div>

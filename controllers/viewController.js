@@ -45,10 +45,15 @@ exports.getSignupForm = (req,res)=>{
 exports.getListOrderUser = async (req,res)=>{
   const user = res.locals.user;
   const orderUser = await User.findById(user.id).populate('orders');
-  const arrayOrder = orderUser.orders
+  const arrayOrder = orderUser.orders;
+  let lastName = user.name.split(' ')[user.name.split(' ').length - 1];
+  if(lastName.length > 10){
+    lastName = lastName.slice(0,7) +'...'
+  }
   res.status(200).render('./pages/list-order-user',{
     user:user,
-    arrayOrder:arrayOrder
+    arrayOrder:arrayOrder,
+    lastName:lastName
   });
 };
 

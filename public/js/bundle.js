@@ -5603,7 +5603,6 @@ if (btnDeleteMenus) {
 if (formUserOrder) {
   formUserOrder.addEventListener('submit', function (e) {
     e.preventDefault();
-    var inputTime = document.getElementById('timeOrder');
     var id_user = document.getElementById('id_user').value;
     var name = document.getElementById('name').value;
     var phone = document.getElementById('phone').value;
@@ -5611,9 +5610,7 @@ if (formUserOrder) {
     var dateOrder = document.getElementById('dateOrder').value;
     var show = document.getElementById('show').value;
     var timeOrder = document.getElementById('timeOrder').value;
-    var note = document.getElementById('note').value;
-    console.log(timeOrder);
-    return; //lấy ngày hiện tại
+    var note = document.getElementById('note').value; //lấy ngày hiện tại
 
     var getDate = new Date();
     var yearCurrent = getDate.getFullYear();
@@ -5931,7 +5928,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50962" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64509" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

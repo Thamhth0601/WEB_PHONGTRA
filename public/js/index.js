@@ -209,7 +209,6 @@ if(formUserOrder){
     formUserOrder.addEventListener('submit',(e)=>{
         e.preventDefault();
 
-        const inputTime = document.getElementById('timeOrder');
         const id_user = document.getElementById('id_user').value;
 
         const name = document.getElementById('name').value;
