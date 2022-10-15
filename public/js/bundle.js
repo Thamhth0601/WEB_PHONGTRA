@@ -5148,7 +5148,7 @@ var createNewOrder = /*#__PURE__*/function () {
             res = _context.sent;
 
             if (res.data.status === 'success') {
-              (0, _alert.showAlert)('success', 'Order table successfully');
+              (0, _alert.showAlert)('success', 'Đặt bàn thành công');
               window.setTimeout(function () {
                 location.assign('/');
               }, 1500);
@@ -5160,7 +5160,7 @@ var createNewOrder = /*#__PURE__*/function () {
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            (0, _alert.showAlert)('error', 'Vui lòng chọn Show diễn');
+            (0, _alert.showAlert)('error', 'Vui lòng thử lại');
 
           case 10:
           case "end":
@@ -5928,7 +5928,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64509" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55051" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

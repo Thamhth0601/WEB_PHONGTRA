@@ -10,13 +10,13 @@ export const createNewOrder = async (data,id_user) =>{
             data: data
         });
         if(res.data.status === 'success'){
-            showAlert('success', 'Order table successfully');
+            showAlert('success', 'Đặt bàn thành công');
             window.setTimeout(()=>{
                 location.assign('/')
             },1500)
         }
     }
     catch(err){
-        showAlert('error','Vui lòng chọn Show diễn')
+        showAlert('error','Vui lòng thử lại')
     }
 }
