@@ -103,14 +103,14 @@
                   <tbody>
                     <% orders.forEach(order => { %> 
                     <tr>
-                      <td><%= order.name%></td>
-                      <td><%= order.phone%></td>
-                      <td><%= order.dateOrder.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'})%></td>
-                      <td><%= order.timeOrder%></td>
-                      <td><%= order.amount%></td>
-                      <td><%= order.show.content%></td>
-                      <td><%= order.note%></td>
-                      <td><%= order.status%></td>
+                      <td style="text-align: center;"><%= order.name%></td>
+                      <td style="text-align: center;"><%= order.phone%></td>
+                      <td style="text-align: center;"><%= order.dateOrder.toLocaleString('zh-HK',{day:'numeric',month: 'numeric',year: 'numeric'})%></td>
+                      <td style="text-align: center;"><%= order.timeOrder%></td>
+                      <td style="text-align: center;"><%= order.amount%></td>
+                      <td style="text-align: center;"><%= order.show.content%></td>
+                      <td style="text-align: center;"><%= order.note%></td>
+                      <td style="text-align: center;"><%= order.status%></td>
                       <td>
                         <div class="action-box">
                           <% if(order.status === 'Chờ xác nhận'){ %> 
